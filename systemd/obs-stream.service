@@ -1,0 +1,22 @@
+[Unit]
+Description=OBS Studio (auto-start streaming)
+After=graphical-session.target
+
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=2
+# Required so Flatpak OBS gets the correct graphics session
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/1000
+# OBS websocket credentials live in ~/.config/utstream/obs.env (gitignored),
+# read by scripts/obs_scene.py via stream_session.sh - NOT here.
+KillSignal=SIGINT
+TimeoutStopSec=25
+KillMode=control-group
+ExecStartPre=/usr/bin/env bash -lc 'set -e; CFG="$HOME/.var/app/com.obsproject.Studio/config/obs-studio"; rm -rf "$CFG/.sentinel" "$CFG/safe_mode" "$CFG/safe_mode.json" "$CFG/shutdown-check" 2>/dev/null || true'
+ExecStart=/usr/bin/env bash -lc 'set -euo pipefail; source /usr/local/bin/xenv.sh; exec /usr/bin/flatpak run com.obsproject.Studio --minimize-to-tray --disable-shutdown-check --startstreaming'
+ExecStopPost=/usr/bin/env bash -lc '/usr/bin/flatpak ps | /bin/grep -q com.obsproject.Studio && /usr/bin/flatpak kill com.obsproject.Studio || true'
+
+[Install]
+WantedBy=default.target

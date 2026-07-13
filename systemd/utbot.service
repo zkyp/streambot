@@ -1,0 +1,17 @@
+[Unit]
+Description=UT Stream Discord Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=zkyp
+WorkingDirectory=/home/zkyp/utbot
+EnvironmentFile=/home/zkyp/.config/utstream/bot.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/zkyp/utbot/venv/bin/python /home/zkyp/utbot/bot.py
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

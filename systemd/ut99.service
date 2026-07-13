@@ -1,0 +1,13 @@
+[Unit]
+Description=Unreal Tournament 99 (join target from ~/.config/utstream/target.txt)
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=SDL_VIDEODRIVER=x11
+WorkingDirectory=%h/.local/share/OldUnreal/UnrealTournament/System64
+ExecStart=/usr/bin/env bash -lc 'set -euo pipefail; source /usr/local/bin/xenv.sh; TARGET="$(cat %h/.config/utstream/target.txt)"; exec ./ut-bin-amd64 "$TARGET" -log -FORCELOGFLUSH -exec=tweaks.txt'
+Restart=no
+
+[Install]
+WantedBy=default.target
