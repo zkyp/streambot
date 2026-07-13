@@ -1,6 +1,6 @@
 # UT Streambot
 
-Discord-controlled Unreal Tournament spectator + OBS streaming automation.
+Discord-controlled Unreal Tournament spectator + OBS streaming automation. I wrote most of the script stuff. ChatGPT helped me with the discord implementation which is nice. Claude fucked up everything when it wanted to add voice communications to it. After fixing it myself, Claude added fancy buttons to push for discord and it made this repo. This vibe coding does make stuff easy, when it works and doesnt break your Linux system.
 Full write-up: https://www.zkyp.nl/UT/streambot.html
 
 ## Components
