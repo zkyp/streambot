@@ -1,0 +1,30 @@
+# Secrets and tokens - NEVER commit these
+bot.env
+obs.env
+*.env
+!bot.env.example
+!obs.env.example
+voicebot_rpc_token.json
+twitch_token.json
+
+# Runtime state
+last_fill.json
+target.txt
+pending_target.txt
+state.txt
+idle_until
+session.lock
+session.log
+whitelist.txt
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Editor cruft
+*.swp
+*~
+*.bak
+*backup*
