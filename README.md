@@ -67,3 +67,8 @@ The following were scrubbed or excluded compared to what runs on the box.
   `systemctl --user restart pipewire wireplumber` clears it. Do NOT install
   wireplumber as the session manager on this Ubuntu 22.04 box - it fights
   PulseAudio for the sound card. Ask us how we know (hint: fuck you Claude).
+
+
+ ## READ THIS
+ - If this fucks up your shit, don't come to me.
+ - I will not help you set this up. <3
