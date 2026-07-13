@@ -61,12 +61,9 @@ The following were scrubbed or excluded compared to what runs on the box.
 
 ## Known caveats
 
-- `scripts/stream_stop.sh` is **reconstructed** - the original on the box was
-  never captured. Diff it against `/home/zkyp/bin/stream_stop.sh` before
-  replacing the live one.
 - `/usr/local/bin/xenv.sh` (X display env for the user session) is referenced
   by the services but not included - it's machine-specific.
 - Known host quirk: PipeWire/PulseAudio can come up stuck after boot;
   `systemctl --user restart pipewire wireplumber` clears it. Do NOT install
   wireplumber as the session manager on this Ubuntu 22.04 box - it fights
-  PulseAudio for the sound card. Ask us how we know.
+  PulseAudio for the sound card. Ask us how we know (hint: fuck you Claude).
